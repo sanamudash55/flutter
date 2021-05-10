@@ -1,0 +1,2 @@
+1 flutter create <appname>
+2) import meterial package 
