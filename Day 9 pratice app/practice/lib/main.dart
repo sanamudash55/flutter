@@ -30,12 +30,12 @@ class _HomepageState extends State<Homepage> {
 
   void num7() {
     display = 7;
-    a = 7;
+    a = 989999999999999;
   }
 
   void num8() {
     display = 8;
-    b = 8;
+    b = 1;
   }
 
   int sum(int a, int b) {
