@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var contactList = ["Sanam Udash", "Sunil Kunwar", "Susan Shresths"];
-  var PhoneNumber = ["9865126175", "9810126463", "9818919817"];
+  var phoneNumber = ["9865126175", "9810126463", "9818919817"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,13 +28,18 @@ class _HomePageState extends State<HomePage> {
         itemCount: contactList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Icon(Icons.supervised_user_circle),
-            trailing: IconButton(
-            icon: Icon(Icons.call),
-            onPressed: (){},
+            leading: CircleAvatar(
+              radius: 25.0,
+              child: Text("${index + 1}"),
             ),
-            title:Text(contactList[index]),
-            subtitle: Text(PhoneNumber[index]),
+            trailing: IconButton(
+              icon: Icon(Icons.call),
+              onPressed: () {
+                launch("tel://${phoneNumber[index]}");
+              },
+            ),
+            title: Text(contactList[index]),
+            subtitle: Text(phoneNumber[index]),
           );
         },
       ),
