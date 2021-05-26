@@ -44,10 +44,10 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   controller: _usernamecontroller,
                   decoration: InputDecoration(
-                      helperText: "Password",
+                      helperText: "Username",
                       helperStyle: TextStyle(fontSize: 20.0),
-                      labelText: "Enter your Password",
-                      hintText: 'Password',
+                      labelText: "Enter your Username",
+                      hintText: 'Username',
                       border: OutlineInputBorder()),
                   validator: (value) =>
                       (value.length == 0 ? 'this field is requirred' : null),
