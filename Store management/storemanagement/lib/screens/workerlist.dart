@@ -7,7 +7,6 @@ class WorkerList extends StatefulWidget {
 }
 
 class _WorkerListState extends State<WorkerList> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +15,7 @@ class _WorkerListState extends State<WorkerList> {
           title: Text("Worker List"),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: ListView.builder(
                 itemCount: workers.length,
                 itemBuilder: (context, index) {
@@ -29,7 +28,10 @@ class _WorkerListState extends State<WorkerList> {
                     ),
                     leading: CircleAvatar(
                       radius: 25.0,
-                      child: Text("${index+1}"),
+                      child: Text(
+                        "${index + 1}",
+                        style: TextStyle(fontSize: 23.0),
+                      ),
                     ),
                     title: Text(
                       "${workers[index]['name']}",

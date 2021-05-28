@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 import 'homepage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _usernamecontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
 
+
   // for controlling the field of the form
   final _formkey = GlobalKey<FormState>();
 
@@ -21,10 +23,11 @@ class _LoginPageState extends State<LoginPage> {
       if (_usernamecontroller.text == "Admin" &&
           _passwordcontroller.text == "admin") {
         final String username = _usernamecontroller.text;
-        final String email = "Udashsanam@gmail.com";
+        final String emails = "Udashsanam@gmail.com";
+        
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomePage(email:email,username: username,)),
+          MaterialPageRoute(builder: (context) => HomePage(email:emails,username: username,)),
         );
       }
     }

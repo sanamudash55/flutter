@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:storemanagement/data/data.dart';
 import 'package:storemanagement/screens/addWorker.dart';
+import 'package:storemanagement/screens/additem.dart';
 import 'package:storemanagement/screens/workerlist.dart';
+
+import 'DetailPage.dart';
 
 class HomePage extends StatefulWidget {
   final String username;
@@ -44,7 +48,10 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 title: Text("Add Item"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddItem()));
+                },
               ),
               ListTile(
                   title: Text("Add Worker"),
@@ -56,39 +63,33 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: [
-              Table(
-                border: TableBorder.all(),
-                children: [
-                  TableRow(children: [
-                    Text("Sno"),
-                    Text("Item name"),
-                    Text("Amount"),
-                    Text("Description"),
-                    Text("Actions"),
-                  ]),
-                  TableRow(children: [
-                    Text("1"),
-                    Text("Hammer"),
-                    Text("100"),
-                    Text(
-                        "The hammer is used to strick any thing to make rigid "),
-                    Text("Delete"),
-                  ]),
-                  TableRow(children: [
-                    Text("1"),
-                    Text("Hammer"),
-                    Text("100"),
-                    Text(
-                        "The hammer is used to strick any thing to make rigid "),
-                    Text("Delete"),
-                  ]),
-                ],
-              )
-            ],
-          ),
-        ));
+            padding: const EdgeInsets.only(top: 8.0, right: 5.0, left: 0),
+            child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailPage(data: "${items[index]['name']}")));
+                    },
+                    trailing: ElevatedButton(
+                      onPressed: () {
+                        print("Goto UpdatePage");
+                      },
+                      child: Text("UPDATE"),
+                    ),
+                    leading: CircleAvatar(
+                      radius: 25.30,
+                      child: Text(
+                        "${index + 1}",
+                        style: TextStyle(fontSize: 23.0),
+                      ),
+                    ),
+                    title: Text("${items[index]['name']}"),
+                  );
+                })));
   }
 }

@@ -17,6 +17,7 @@ class _AddWorkerState extends State<AddWorker> {
         var name = _name.text;
         var number = _number.text;
         workers.add({"name": "$name", "number": "$number"});
+        _name.text = _number.text = "";
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => WorkerList()));
       });
